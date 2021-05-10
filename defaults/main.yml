@@ -1,0 +1,5 @@
+---
+
+net1int: 'eth0'
+net2int: 'eth1'
+host_domain: 'viskum-net.dk'

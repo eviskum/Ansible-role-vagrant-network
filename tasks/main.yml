@@ -1,0 +1,32 @@
+---
+
+# disable DHCP update of resolv.conf
+- name: Disable DHCP update of resolv.conf
+  template:
+    src: nodnsupdate.j2
+    dest: /etc/dhcp/dhclient-enter-hooks.d/nodnsupdate
+    owner: root
+    group: root
+    mode: 0755
+
+# create /etc/network/interfaces
+- name: Set network interfaces /etc/network/interfaces
+  template:
+    src: interfaces.j2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+
+# create /etc/resolv.conf
+- name: Set DNS /etc/resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Print reboot request
+  debug:
+    msg: "----->   P L E A S E   R E B O O T   H O S T  ! ! ! ! !"

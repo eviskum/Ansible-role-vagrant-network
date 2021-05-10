@@ -1,0 +1,20 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The host NAT network interface
+allow-hotplug {{ net1int }}
+iface {{ net1int }} inet dhcp
+    post-up ip route del default dev {{ net1int }} || true
+
+# The LAN network interface
+auto {{ net2int }}
+iface {{ net2int }} inet static
+      address {{ net2int_ip }}
+      netmask {{ net2int_mask }}
+      gateway {{ net2int_gw }}
