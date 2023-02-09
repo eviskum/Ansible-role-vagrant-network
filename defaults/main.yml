@@ -2,4 +2,5 @@
 
 net1int: 'eth0'
 net2int: 'eth1'
+net2int_promisc: false
 host_domain: 'viskum-net.dk'
